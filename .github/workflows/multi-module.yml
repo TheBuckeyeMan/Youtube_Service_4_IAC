@@ -1,15 +1,14 @@
-name: Modular IaC Deployment with Terraform Cloud
+name: Multi-Module Workflow
 
 on:
   workflow_dispatch:
     inputs:
       module:
-        description: 'Select the IaC module to deploy (connect, roles, ecs)'
+        description: 'Select the IaC module to deploy [connect, roles, ecs, application]'
         required: true
-        default: 'connect'
         type: string
       environment:
-        description: 'Select the environment (dev, test, prod)'
+        description: 'Select the environment [dev, test, prod]'
         required: true
         default: 'dev'
         type: string
@@ -40,20 +39,15 @@ jobs:
       id: set-path
       run: |
         case "${{ github.event.inputs.module }}" in
-          connect) echo "module_path=/Users/adammaas/Desktop/Codeing/GitHub_Repositories/Youtube_Service_4_IAC/modules/connect" >> $GITHUB_ENV ;;
-          roles) echo "module_path=/Users/adammaas/Desktop/Codeing/GitHub_Repositories/Youtube_Service_4_IAC/modules/roles" >> $GITHUB_ENV ;;
-          ecs) echo "module_path=/Users/adammaas/Desktop/Codeing/GitHub_Repositories/Youtube_Service_4_IAC/modules/ecs" >> $GITHUB_ENV ;;
-          *) echo "Invalid module selected"; exit 1 ;;
+        connect) echo "module_path=modules/connect" >> $GITHUB_ENV ;;
+        roles) echo "module_path=modules/roles" >> $GITHUB_ENV ;;
+        ecs) echo "module_path=modules/ecs" >> $GITHUB_ENV ;;
+        application) echo "module_path=modules/application" >> $GITHUB_ENV ;;
+        *) echo "Invalid module selected"; exit 1 ;;
         esac
 
     - name: Terraform Init
       run: terraform init
-      working-directory: ${{ env.module_path }}
-
-    - name: Create or Select Workspace
-      run: |
-        WORKSPACE_NAME="YoutubeService4-${{ github.event.inputs.module }}"
-        terraform workspace select "$WORKSPACE_NAME" || terraform workspace new "$WORKSPACE_NAME"
       working-directory: ${{ env.module_path }}
 
     - name: Terraform Apply
