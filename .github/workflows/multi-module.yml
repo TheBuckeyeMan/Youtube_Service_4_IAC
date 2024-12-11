@@ -1,15 +1,14 @@
-name: Modular IaC Deployment with Terraform Cloud
+name: Multi-Module Workflow
 
 on:
   workflow_dispatch:
     inputs:
       module:
-        description: 'Select the IaC module to deploy (connect, roles, ecs)'
+        description: 'Select the IaC module to deploy [connect, roles, ecs,application]'
         required: true
-        default: 'connect'
         type: string
       environment:
-        description: 'Select the environment (dev, test, prod)'
+        description: 'Select the environment [dev, test, prod]'
         required: true
         default: 'dev'
         type: string
