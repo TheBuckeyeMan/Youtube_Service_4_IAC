@@ -39,10 +39,10 @@ jobs:
       id: set-path
       run: |
         case "${{ github.event.inputs.module }}" in
-          connect) echo "module_path=/Users/adammaas/Desktop/Codeing/GitHub_Repositories/Youtube_Service_4_IAC/modules/connect" >> $GITHUB_ENV ;;
-          roles) echo "module_path=/Users/adammaas/Desktop/Codeing/GitHub_Repositories/Youtube_Service_4_IAC/modules/roles" >> $GITHUB_ENV ;;
-          ecs) echo "module_path=/Users/adammaas/Desktop/Codeing/GitHub_Repositories/Youtube_Service_4_IAC/modules/ecs" >> $GITHUB_ENV ;;
-          *) echo "Invalid module selected"; exit 1 ;;
+        connect) echo "module_path=modules/connect" >> $GITHUB_ENV ;;
+        roles) echo "module_path=modules/roles" >> $GITHUB_ENV ;;
+        ecs) echo "module_path=modules/ecs" >> $GITHUB_ENV ;;
+        *) echo "Invalid module selected"; exit 1 ;;
         esac
 
     - name: Terraform Init
