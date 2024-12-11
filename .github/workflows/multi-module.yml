@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       module:
-        description: 'Select the IaC module to deploy [connect, roles, ecs,application]'
+        description: 'Select the IaC module to deploy [connect, roles, ecs, application]'
         required: true
         type: string
       environment:
@@ -48,12 +48,6 @@ jobs:
 
     - name: Terraform Init
       run: terraform init
-      working-directory: ${{ env.module_path }}
-
-    - name: Create or Select Workspace
-      run: |
-        WORKSPACE_NAME="YoutubeService4-${{ github.event.inputs.module }}"
-        terraform workspace select "$WORKSPACE_NAME" || terraform workspace new "$WORKSPACE_NAME"
       working-directory: ${{ env.module_path }}
 
     - name: Terraform Apply
