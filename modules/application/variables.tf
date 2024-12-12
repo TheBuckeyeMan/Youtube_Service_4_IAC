@@ -69,3 +69,51 @@ variable "desired_count" {
   type        = number
   default     = 1
 }
+
+variable "logging_bucket_name" {
+  description = "Name of the logging bucket"
+  type        = string
+}
+
+variable "logging_bucket_key" {
+  description = "Key for logging bucket"
+  type        = string
+}
+
+variable "landing_bucket" {
+  description = "Name of the landing bucket"
+  type        = string
+}
+
+variable "audio_bucket_key" {
+  description = "Key for audio bucket"
+  type        = string
+}
+
+variable "video_bucket_key" {
+  description = "Key for video bucket"
+  type        = string
+}
+
+variable "youtube_bucket_key" {
+  description = "Key for YouTube bucket"
+  type        = string
+}
+
+variable "aws_region" {
+  description = "AWS region"
+  type        = string
+}
+
+
+
+variable "container_image" {
+  description = "ECR image URI for the container"
+  type        = string
+  default     = "339712758982.dkr.ecr.us-east-2.amazonaws.com/youtube-containers:youtube-service-4"
+}
+
+variable "log_group" {
+  description = "The name of the CloudWatch Log Group for ECS tasks"
+  type        = string
+}

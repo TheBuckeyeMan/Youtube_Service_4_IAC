@@ -1,4 +1,4 @@
-resource "aws_ecs_task_definition" "youtube-service-4" {
+resource "aws_ecs_task_definition" "youtube_service_4" {
   family                   = var.family_name
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
@@ -6,7 +6,33 @@ resource "aws_ecs_task_definition" "youtube-service-4" {
   memory                   = var.memory
   execution_role_arn       = var.execution_role_arn
   task_role_arn            = var.task_role_arn
-  container_definitions    = file("container-definitions.json")
+
+  container_definitions = jsonencode([
+    {
+      name      = "youtube-service-4"
+      image     = var.container_image
+      memory    = var.memory
+      cpu       = var.cpu
+      essential = true
+      environment = [
+        { name = "LOGGING_BUCKET_NAME", value = var.logging_bucket_name },
+        { name = "LOGGING_BUCKET_KEY", value = var.logging_bucket_key },
+        { name = "LANDING_BUCKET", value = var.landing_bucket },
+        { name = "AUDIO_BUCKET_KEY", value = var.audio_bucket_key },
+        { name = "VIDEO_BUCKET_KEY", value = var.video_bucket_key },
+        { name = "YOUTUBE_BUCKET_KEY", value = var.youtube_bucket_key },
+        { name = "AWS_REGION", value = var.aws_region }
+      ]
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          awslogs-group         = var.log_group
+          awslogs-region        = var.aws_region
+          awslogs-stream-prefix = "youtube-service-4"
+        }
+      }
+    }
+  ])
 }
 
 resource "aws_ecs_service" "app_service" {
