@@ -44,26 +44,6 @@ variable "memory" {
   default     = "512"
 }
 
-variable "execution_role_arn" {
-  description = "ARN of the ECS execution role"
-  type        = string
-}
-
-variable "task_role_arn" {
-  description = "ARN of the ECS task role"
-  type        = string
-}
-
-variable "subnet_ids" {
-  description = "List of private subnet IDs"
-  type        = list(string)
-}
-
-variable "vpc_id" {
-  description = "VPC ID"
-  type        = string
-}
-
 variable "desired_count" {
   description = "Number of tasks to run"
   type        = number
@@ -100,18 +80,8 @@ variable "YOUTUBE_BUCKET_KEY" {
   type        = string
 }
 
-variable "AWS_REGION" {
-  description = "AWS region"
-  type        = string
-}
-
 variable "container_image" {
   description = "ECR image URI for the container"
   type        = string
   default     = "339712758982.dkr.ecr.us-east-2.amazonaws.com/youtube-containers:youtube-service-4"
-}
-
-variable "log_group" {
-  description = "The name of the CloudWatch Log Group for ECS tasks"
-  type        = string
 }
