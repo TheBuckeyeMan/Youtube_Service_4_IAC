@@ -19,7 +19,7 @@ resource "aws_lb_target_group" "ecs_target_group" {
   port        = 80
   protocol    = "HTTP"
   target_type = "ip"
-  vpc_id      = data.aws_vpc.main
+  vpc_id      = data.aws_vpc.main.id
 
   health_check {
     interval            = 30

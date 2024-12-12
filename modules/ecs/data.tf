@@ -20,7 +20,7 @@ data "aws_subnets" "public_subnets" {
 data "aws_security_group" "alb_sg" {
   filter {
     name   = "tag:Name"
-    values = ["alb-sg"] # Replace with your ALB security group name or tag
+    values = ["api_gateway"] # Replace with your ALB security group name or tag
   }
 
   filter {
