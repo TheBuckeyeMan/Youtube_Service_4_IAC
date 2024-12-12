@@ -6,8 +6,8 @@ resource "aws_lb" "ecs_alb" {
   name               = "ecs-alb"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [var.alb_security_group_id]
-  subnets            = var.subnet_ids
+  security_groups    = [data.aws_security_group.alb_sg.id]
+  subnets            = data.aws_subnets.public_subnets.ids
 
   tags = {
     Name = "ecs-alb"
@@ -19,7 +19,7 @@ resource "aws_lb_target_group" "ecs_target_group" {
   port        = 80
   protocol    = "HTTP"
   target_type = "ip"
-  vpc_id      = var.vpc_id
+  vpc_id      = data.aws_vpc.main
 
   health_check {
     interval            = 30
