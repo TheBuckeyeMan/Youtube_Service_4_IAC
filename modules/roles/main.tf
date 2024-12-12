@@ -48,8 +48,8 @@ resource "aws_iam_role_policy" "ecs_task_s3_access" {
           "s3:PutObject"
         ],
         Resource = [
-          "arn:aws:s3:::your-input-bucket-name/*",
-          "arn:aws:s3:::your-output-bucket-name/*"
+          "arn:aws:s3:::landing-data-bucket-1220-16492640/*",
+          "logging-event-driven-bucket-1220-16492640  /*"
         ]
       }
     ]
