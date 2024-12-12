@@ -13,3 +13,9 @@ variable "region" {
     type = string
     default = "us-east-2"
 }
+
+variable "cluster_name" {
+  description = "ECS cluster name"
+  type        = string
+  default     = "youtube-cluster"
+}
