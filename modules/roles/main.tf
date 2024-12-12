@@ -56,10 +56,11 @@ resource "aws_iam_role_policy" "ecs_task_s3_access" {
   })
 }
 
-output "ecs_task_execution_role_arn" {
-  value = aws_iam_role.ecs_task_execution_role.arn
-}
+resource "aws_cloudwatch_log_group" "ecs_log_group" {
+  name              = "/ecs/youtube-service-4" # Ensure this matches the expected name
+  retention_in_days = 7                        # Adjust retention as needed
 
-output "ecs_task_role_arn" {
-  value = aws_iam_role.ecs_task_role.arn
+  tags = {
+    Name = "ECS Log Group"
+  }
 }
