@@ -17,5 +17,5 @@ variable "region" {
 variable "cluster_name" {
   description = "ECS cluster name"
   type        = string
-  default     = "youtube-job-verification-cluster"
+  default     = "youtube-cluster"
 }
