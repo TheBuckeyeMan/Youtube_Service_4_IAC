@@ -49,7 +49,7 @@ resource "aws_iam_role_policy" "ecs_task_s3_access" {
         ],
         Resource = [
           "arn:aws:s3:::landing-data-bucket-1220-16492640/*",
-          "logging-event-driven-bucket-1220-16492640  /*"
+          "arn:aws:s3:::logging-event-driven-bucket-1220-16492640/*"
         ]
       }
     ]
