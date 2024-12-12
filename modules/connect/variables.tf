@@ -17,7 +17,7 @@ variable "region" {
 variable "vpc_name" {
   description = "Name of the VPC"
   type        = string
-  default     = "youtube-job-verification-vpc"
+  default     = "youtube-vpc"
 }
 
 variable "cidr_block" {
