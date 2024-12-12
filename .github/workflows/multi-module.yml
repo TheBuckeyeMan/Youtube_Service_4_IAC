@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       module:
-        description: 'Select the IaC module to deploy [connect, roles, ecs, application]'
+        description: 'Select the IaC module to deploy [connect, roles, ecs, api_gateway]'
         required: true
         type: string
       environment:
@@ -42,7 +42,7 @@ jobs:
         connect) echo "module_path=modules/connect" >> $GITHUB_ENV ;;
         roles) echo "module_path=modules/roles" >> $GITHUB_ENV ;;
         ecs) echo "module_path=modules/ecs" >> $GITHUB_ENV ;;
-        application) echo "module_path=modules/application" >> $GITHUB_ENV ;;
+        api_gateway) echo "module_path=modules/api_gateway" >> $GITHUB_ENV ;;
         *) echo "Invalid module selected"; exit 1 ;;
         esac
 

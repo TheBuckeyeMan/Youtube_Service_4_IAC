@@ -13,13 +13,3 @@ variable "region" {
     type = string
     default = "us-east-2"
 }
-
-variable "input_bucket_name" {
-  description = "S3 bucket for input files"
-  type        = string
-}
-
-variable "output_bucket_name" {
-  description = "S3 bucket for output files"
-  type        = string
-}
