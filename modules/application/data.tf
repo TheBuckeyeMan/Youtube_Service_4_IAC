@@ -7,13 +7,13 @@ data "aws_cloudwatch_log_group" "ecs_log_group" {
 }
 
 data "aws_iam_role" "ecs_execution_role" {
-  name = "ecsTaskExecutionRole" # Replace with your actual role name
+  name = "ecs-task-execution-role"
 }
 
 data "aws_vpc" "main_vpc" {
   filter {
     name   = "tag:Name"
-    values = ["youtube-vpc"] # Replace with your VPC's tag name
+    values = ["youtube-vpc"]
   }
 }
 
@@ -30,12 +30,12 @@ data "aws_subnets" "public_subnets" {
 }
 
 data "aws_iam_role" "ecs_task_role" {
-  name = "ecsTaskRole" # Replace with your actual role name
+  name = "ecs-task-role"
 }
 
 data "aws_security_group" "ecs_service" {
   filter {
     name   = "tag:Name"
-    values = ["ECS Service Security Group"] # Replace with your security group name or tag
+    values = ["ECS Service Security Group"]
   }
 }
