@@ -4,8 +4,8 @@ resource "aws_ecs_task_definition" "youtube_service_4" {
   network_mode             = "awsvpc"
   cpu                      = var.cpu
   memory                   = var.memory
-  execution_role_arn       = var.execution_role_arn
-  task_role_arn            = var.task_role_arn
+  execution_role_arn = data.aws_iam_role.ecs_execution_role.arn
+  task_role_arn = data.aws_iam_role.ecs_task_role.arn
 
   container_definitions = jsonencode([
     {
@@ -21,13 +21,13 @@ resource "aws_ecs_task_definition" "youtube_service_4" {
         { name = "AUDIO_BUCKET_KEY", value = var.AUDIO_BUCKET_KEY },
         { name = "VIDEO_BUCKET_KEY", value = var.VIDEO_BUCKET_KEY },
         { name = "YOUTUBE_BUCKET_KEY", value = var.YOUTUBE_BUCKET_KEY },
-        { name = "AWS_REGION", value = var.AWS_REGION }
+        { name = "AWS_REGION", value = var.region }
       ]
       logConfiguration = {
         logDriver = "awslogs"
         options = {
-          awslogs-group         = var.log_group
-          awslogs-region        = var.AWS_REGION
+          awslogs-group = data.aws_cloudwatch_log_group.ecs_log_group.name
+          awslogs-region        = var.region
           awslogs-stream-prefix = "youtube-service-4"
         }
       }
@@ -43,7 +43,7 @@ resource "aws_ecs_service" "app_service" {
   launch_type     = "FARGATE"
 
   network_configuration {
-    subnets         = var.subnet_ids
+    subnets = data.aws_subnets.public_subnets.ids
     security_groups = [aws_security_group.ecs_service.id]
     assign_public_ip = false
   }
