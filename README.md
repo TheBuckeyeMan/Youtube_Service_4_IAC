@@ -3,6 +3,8 @@ Infrastructure for youtube service 4. Infrastructure to incude ECS Cluster as we
 
 This ECS Cluster is configured to be ON-DEMAND
 
+To Trigger a service triggered on an ON DEMAND ECS Cluster, you must trigger the ECS Task Definition Itself, you will not see a task in the cluster unless the task is executed
+
 ## Deployment Order for ECS Cluster
 1. Connect Module
 2. Roles Module
