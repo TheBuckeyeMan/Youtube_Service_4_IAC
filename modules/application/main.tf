@@ -15,19 +15,19 @@ resource "aws_ecs_task_definition" "youtube_service_4" {
       cpu       = var.cpu
       essential = true
       environment = [
-        { name = "LOGGING_BUCKET_NAME", value = var.logging_bucket_name },
-        { name = "LOGGING_BUCKET_KEY", value = var.logging_bucket_key },
-        { name = "LANDING_BUCKET", value = var.landing_bucket },
-        { name = "AUDIO_BUCKET_KEY", value = var.audio_bucket_key },
-        { name = "VIDEO_BUCKET_KEY", value = var.video_bucket_key },
-        { name = "YOUTUBE_BUCKET_KEY", value = var.youtube_bucket_key },
-        { name = "AWS_REGION", value = var.aws_region }
+        { name = "LOGGING_BUCKET_NAME", value = var.LOGGING_BUCKET_NAME },
+        { name = "LOGGING_BUCKET_KEY", value = var.LOGGING_BUCKET_KEY },
+        { name = "LANDING_BUCKET", value = var.LANDING_BUCKET },
+        { name = "AUDIO_BUCKET_KEY", value = var.AUDIO_BUCKET_KEY },
+        { name = "VIDEO_BUCKET_KEY", value = var.VIDEO_BUCKET_KEY },
+        { name = "YOUTUBE_BUCKET_KEY", value = var.YOUTUBE_BUCKET_KEY },
+        { name = "AWS_REGION", value = var.AWS_REGION }
       ]
       logConfiguration = {
         logDriver = "awslogs"
         options = {
           awslogs-group         = var.log_group
-          awslogs-region        = var.aws_region
+          awslogs-region        = var.AWS_REGION
           awslogs-stream-prefix = "youtube-service-4"
         }
       }
