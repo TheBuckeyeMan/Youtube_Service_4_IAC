@@ -70,42 +70,40 @@ variable "desired_count" {
   default     = 1
 }
 
-variable "logging_bucket_name" {
+variable "LOGGING_BUCKET_NAME" {
   description = "Name of the logging bucket"
   type        = string
 }
 
-variable "logging_bucket_key" {
+variable "LOGGING_BUCKET_KEY" {
   description = "Key for logging bucket"
   type        = string
 }
 
-variable "landing_bucket" {
+variable "LANDING_BUCKET" {
   description = "Name of the landing bucket"
   type        = string
 }
 
-variable "audio_bucket_key" {
+variable "AUDIO_BUCKET_KEY" {
   description = "Key for audio bucket"
   type        = string
 }
 
-variable "video_bucket_key" {
+variable "VIDEO_BUCKET_KEY" {
   description = "Key for video bucket"
   type        = string
 }
 
-variable "youtube_bucket_key" {
+variable "YOUTUBE_BUCKET_KEY" {
   description = "Key for YouTube bucket"
   type        = string
 }
 
-variable "aws_region" {
+variable "AWS_REGION" {
   description = "AWS region"
   type        = string
 }
-
-
 
 variable "container_image" {
   description = "ECR image URI for the container"
