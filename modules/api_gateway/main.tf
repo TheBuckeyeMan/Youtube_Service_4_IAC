@@ -1,3 +1,5 @@
+#Reconfigure later - DO NOT DEPLOY
+
 resource "aws_api_gateway_vpc_link" "ecs_vpc_link" {
   name        = "ecs-vpc-link"
   target_arns = [aws_alb_target_group.ecs_target_group.arn]
