@@ -1,4 +1,4 @@
-resource "aws_ecs_task_definition" "app" {
+resource "aws_ecs_task_definition" "youtube-service-4" {
   family                   = var.family_name
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
@@ -21,8 +21,4 @@ resource "aws_ecs_service" "app_service" {
     security_groups = [aws_security_group.ecs_service.id]
     assign_public_ip = false
   }
-}
-
-output "ecs_service_arn" {
-  value = aws_ecs_service.app_service.id
 }
