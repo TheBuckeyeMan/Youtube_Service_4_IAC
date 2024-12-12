@@ -32,3 +32,14 @@ data "aws_subnets" "public_subnets" {
 data "aws_iam_role" "ecs_task_role" {
   name = "ecsTaskRole" # Replace with your actual role name
 }
+
+data "aws_ecs_cluster" "fargate_cluster" {
+  cluster_name = "youtube-cluster" # Replace with your cluster name
+}
+
+data "aws_security_group" "ecs_service" {
+  filter {
+    name   = "tag:Name"
+    values = ["ECS Service Security Group"] # Replace with your security group name or tag
+  }
+}
