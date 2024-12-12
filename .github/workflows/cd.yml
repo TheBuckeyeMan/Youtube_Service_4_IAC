@@ -5,7 +5,7 @@ on:
 
 env:
   TF_CLOUD_ORGANIZATION: "1220-IAC"
-  CONFIG_DIRECTORY: "./"
+  CONFIG_DIRECTORY: "./modules/application"
   
 jobs:
   Deploy_Resources:
@@ -27,14 +27,9 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-        working-directory: terraform
-
-      - name: Create or Select Workspace
-        run: |
-          terraform workspace select YoutubeService3 || terraform workspace new YoutubeService3
-        working-directory: terraform
+        working-directory: ${{ env.CONFIG_DIRECTORY }}
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" -var="LOGGING_BUCKET_NAME=${{ secrets.LOGGING_BUCKET_NAME }}" -var="LOGGING_BUCKET_KEY=${{ secrets.LOGGING_BUCKET_KEY }}" -var="GPT_BUCKET_KEY=${{ secrets.GPT_BUCKET_KEY }}" -var="LANDING_BUCKET=${{ secrets.LANDING_BUCKET }}" -var="AUDIO_BUCKET_KEY=${{ secrets.AUDIO_BUCKET_KEY }}" -var="API_URL=${{ secrets.API_URL }}" -var="API_NAME=${{ secrets.API_NAME }}"
-        working-directory: terraform
+        run: terraform apply -auto-approve -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" -var="LOGGING_BUCKET_NAME=${{ secrets.LOGGING_BUCKET_NAME }}" -var="LOGGING_BUCKET_KEY=${{ secrets.LOGGING_BUCKET_KEY }}" -var="GPT_BUCKET_KEY=${{ secrets.GPT_BUCKET_KEY }}" -var="LANDING_BUCKET=${{ secrets.LANDING_BUCKET }}"
+        working-directory: ${{ env.CONFIG_DIRECTORY }}
 
