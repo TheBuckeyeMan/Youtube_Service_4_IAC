@@ -23,13 +23,13 @@ variable "cluster_name" {
 variable "family_name" {
   description = "Family name for the ECS task definition"
   type        = string
-  default     = "youtube-job-verification-family"
+  default     = "youtube-service-4"
 }
 
 variable "service_name" {
   description = "ECS service name"
   type        = string
-  default     = "youtube-job-verification-service"
+  default     = "youtube-service-4"
 }
 
 variable "cpu" {
