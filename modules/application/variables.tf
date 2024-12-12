@@ -35,13 +35,13 @@ variable "service_name" {
 variable "cpu" {
   description = "CPU units for Fargate tasks"
   type        = number
-  default     = 256
+  default     = 256 # Lowest Cost Option
 }
 
 variable "memory" {
   description = "Memory for Fargate tasks"
   type        = number
-  default     = 512
+  default     = 512 # Lowest Cost Option
 }
 
 variable "desired_count" {

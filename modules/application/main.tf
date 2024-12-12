@@ -35,24 +35,25 @@ resource "aws_ecs_task_definition" "youtube_service_4" {
   ])
 }
 
-resource "aws_ecs_service" "app_service" {
-  name            = var.service_name
-  cluster = data.aws_ecs_cluster.fargate_cluster.id
-  task_definition = aws_ecs_task_definition.youtube_service_4.arn
-  desired_count   = var.desired_count
-  launch_type     = "FARGATE"
+#Below is an always active ecs service - DO NOT USE for Event driven, batch jobs, or smaller tasks as this makes your app ALWAYS ACTIVE: Min cost of this is 10$ Per Month(No Traffic)
+# resource "aws_ecs_service" "app_service" {
+#   name            = var.service_name
+#   cluster = data.aws_ecs_cluster.fargate_cluster.id
+#   task_definition = aws_ecs_task_definition.youtube_service_4.arn
+#   desired_count   = var.desired_count
+#   launch_type     = "FARGATE"
 
-  network_configuration {
-    subnets = data.aws_subnets.public_subnets.ids
-    security_groups = [data.aws_security_group.ecs_service.id]
-    assign_public_ip = false
-  }
-  deployment_controller {
-    type = "ECS"
-  }
+#   network_configuration {
+#     subnets = data.aws_subnets.public_subnets.ids
+#     security_groups = [data.aws_security_group.ecs_service.id]
+#     assign_public_ip = false
+#   }
+#   deployment_controller {
+#     type = "ECS"
+#   }
 
-  tags = {
-    Name        = var.service_name
-    Environment = "Production"
-  }
-}
+#   tags = {
+#     Name        = var.service_name
+#     Environment = "Production"
+#   }
+# }
