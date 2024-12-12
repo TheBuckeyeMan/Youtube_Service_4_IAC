@@ -1,6 +1,7 @@
 # Youtube_Service_4_IAC
 Infrastructure for youtube service 4. Infrastructure to incude ECS Cluster as well as all required roles. 
 
+This ECS Cluster is configured to be ON-DEMAND
 
 ## Deployment Order for ECS Cluster
 1. Connect Module
