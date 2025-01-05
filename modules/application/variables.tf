@@ -80,6 +80,11 @@ variable "YOUTUBE_BUCKET_KEY" {
   type        = string
 }
 
+variable "SPEECH_BUCKET_KEY" {
+  description = "SPEECH_BUCKET_KEY"
+  type        = string
+}
+
 variable "container_image" {
   description = "ECR image URI for the container"
   type        = string
