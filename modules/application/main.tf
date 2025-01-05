@@ -21,6 +21,7 @@ resource "aws_ecs_task_definition" "youtube_service_4" {
         { name = "AUDIO_BUCKET_KEY", value = var.AUDIO_BUCKET_KEY },
         { name = "VIDEO_BUCKET_KEY", value = var.VIDEO_BUCKET_KEY },
         { name = "YOUTUBE_BUCKET_KEY", value = var.YOUTUBE_BUCKET_KEY },
+        { name = "SPEECH_BUCKET_KEY", value = var.SPEECH_BUCKET_KEY },
         { name = "AWS_REGION", value = var.region }
       ]
       logConfiguration = {
